@@ -116,7 +116,7 @@ async def finish_review_callback(update: Update, context: ContextTypes.DEFAULT_T
     await query.edit_message_text("Спасибо за ваш отзыв! 🙏")
     
     # Второе сообщение - показываем сам отзыв
-    await send_review_to_user(context, user_id, review_data)
+    # await send_review_to_user(context, user_id, review_data)
     
     # Третье сообщение - информация об отправке с кнопкой
     final_text = (
