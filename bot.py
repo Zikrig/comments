@@ -59,8 +59,9 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "Администратор канала все прочитает, увидит и, при необходимости, поправит."
     )
     
-    await update.message.reply_text(
-        welcome_text,
+    await context.bot.send_message(
+        chat_id=update.effective_chat.id,
+        text=welcome_text,
         reply_markup=get_start_keyboard()
     )
 
@@ -196,8 +197,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     # Проверяем, есть ли активный отзыв
     if user_id not in active_reviews:
-        await update.message.reply_text(
-            "У вас нет активного отзыва. Нажмите 'Новый отзыв', чтобы начать.",
+        await context.bot.send_message(
+            chat_id=update.effective_chat.id,
+            text="У вас нет активного отзыва. Нажмите 'Новый отзыв', чтобы начать.",
             reply_markup=get_start_keyboard()
         )
         return
@@ -213,8 +215,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "Пока Вы не нажмете кнопку \"Завершить текущий отзыв\", все, что Вы отправите, будет объединено в один отзыв."
     )
     
-    await update.message.reply_text(
-        response_text,
+    await context.bot.send_message(
+        chat_id=update.effective_chat.id,
+        text=response_text,
         reply_markup=get_review_keyboard()
     )
 
@@ -225,8 +228,9 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     # Проверяем, есть ли активный отзыв
     if user_id not in active_reviews:
-        await update.message.reply_text(
-            "У вас нет активного отзыва. Нажмите 'Новый отзыв', чтобы начать.",
+        await context.bot.send_message(
+            chat_id=update.effective_chat.id,
+            text="У вас нет активного отзыва. Нажмите 'Новый отзыв', чтобы начать.",
             reply_markup=get_start_keyboard()
         )
         return
@@ -245,8 +249,9 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "Пока Вы не нажмете кнопку \"Завершить текущий отзыв\", все, что Вы отправите, будет объединено в один отзыв."
     )
     
-    await update.message.reply_text(
-        response_text,
+    await context.bot.send_message(
+        chat_id=update.effective_chat.id,
+        text=response_text,
         reply_markup=get_review_keyboard()
     )
 
